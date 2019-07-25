@@ -1,0 +1,138 @@
+﻿@model Proyecto_Sistema_Nutricional_UH.Models.Usuario
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sistema Nutrional UH | Registro</title>
+    <link rel="Icon" href="~/Images/icono.ico">
+    <link href="~/Css/stylesheet-login.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-grid.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+</head>
+<body>
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header text-white">
+                    <img src="~/Images/uhLogo.png" id="logo" />
+                </div>
+            </div>
+        </nav>
+        <!-- Navbar -->
+    </header>
+    <main>
+        <!-- section -->
+        <section>
+            <div class="form-group">
+                @using (Html.BeginForm())
+                { @Html.ValidationSummary()
+                    <div class="container-fluid text-center">
+                        <h2 class="text-white text-center">Ingrese los siguientes datos:<br></h2>
+                        <div class="row content">
+                            <div class="col-sm-3">
+                            </div>
+                            <div class="main col-sm-2 text-left text-white">
+                                <div class="form-group">
+                                    <label>Ingrese su Cédula:</label>
+                                    @Html.TextBoxFor(x => x.cedula, new { @class = "form-control", @placeholder = "Cédula", @required = "required", @type = "number" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Ingrese su Nombre:</label>
+                                    @Html.TextBoxFor(x => x.nombre, new { @class = "form-control", @placeholder = "Ingrese su nombre", @required = "required" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Ingrese su Edad:</label>
+                                    @Html.TextBoxFor(x => x.edad, new { @required = "required", @class = "form-control", @type = "number", htmlAttributes = new { min = 1, max = 99 } })
+                                </div>
+                                <div class="form-group">
+                                    <label>Cantidad de ejercicio al día:</label>
+                                    @Html.DropDownListFor(x => x.factorActividad, new[]
+                                    {
+                                        new SelectListItem() { Text= "Trabajo de escritorio – sin ejercicio", Value = "1.2m"},
+                                        new SelectListItem() { Text= "Hago ejercicio 1-3 días por semana", Value = "1.375m"},
+                                        new SelectListItem() { Text= "Hago ejercicio 3-5 días por semana", Value = "1.55m"},
+                                        new SelectListItem() { Text= "Hago ejercicio 6-7 días por semana", Value = "1.725m"},
+                                        new SelectListItem() { Text= "Soy deportista profesional", Value = "1.9m"}},
+                                        new { @class = "form-control", @required = "required" })
+                                </div>
+                            </div>
+                            <div class="main col-sm-2 text-left text-white">
+                                <div class="form-group">
+                                    <label>Ingrese una Contraseña:</label>
+                                    @Html.TextBoxFor(x => x.contrasena, new { @class = "form-control", @placeholder = "Ingrese su contraseña", @required = "required" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Ingrese sus Apellidos:</label>
+                                    @Html.TextBoxFor(x => x.apellidos, new { @class = "form-control", @placeholder = "Ingrese sus apellidos", @required = "required" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Ingrese su Estatura en CM:</label>
+                                    @Html.TextBoxFor(x => x.estatura, new { @required = "required", @class = "form-control", @type = "number" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Cantidad de comidas al día:</label>
+                                    @Html.DropDownListFor(x => x.cantidadComidas, new[]
+                                    {
+                                        new SelectListItem() { Text= "Realizo solo 1 comida al día", Value = "1"},
+                                        new SelectListItem() { Text= "Realizo 2 comidas al día", Value = "2"},
+                                        new SelectListItem() { Text= "Realizo 3 comidas al día", Value = "3"},
+                                        new SelectListItem() { Text= "Realizo 3 comidas y 1 merienda", Value = "4"},
+                                        new SelectListItem() { Text= "Realizo 3 comidas y 2 meriendas", Value = "5"}},
+                                        new { @class = "form-control", @required = "required" })
+                                </div>
+                            </div>
+                            <div class="main col-sm-2 text-left text-white">
+                                <div class="form-group">
+                                    <label>Ingrese su Correo:</label>
+                                    @Html.TextBoxFor(x => x.correo, new { @class = "form-control", @placeholder = "Ingrese su correo", @required = "required", @type = "email" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Seleccione su Sexo:</label>
+                                    @Html.DropDownListFor(x => x.sexo, new[]
+                                    {
+                                        new SelectListItem() { Text= "Hombre"},
+                                        new SelectListItem() { Text= "Mujer"}},
+                                        new { @class = "form-control", @required = "required" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Ingrese su Peso en KG:</label>
+                                    @Html.TextBoxFor(x => x.peso, new { @required = "required", @class = "form-control", @type = "number" })
+                                </div>
+                                <div class="form-group float-left">
+                                    <label>Haga click para crear cuenta!</label>
+                                    <button type="submit" value="save" class="btn btn-success">Crear Cuenta</button>
+                                    <label class="text-white">@ViewBag.mensaje</label><br />
+                                    @Html.ActionLink("Regresar a inicio", "Index")
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                        </div>
+                    </div>          
+                }
+            </div>
+        </section>
+        <!-- section -->
+    </main>
+    <!-- Footer -->
+    <footer class="page-footer font-small blue">
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">
+            © 2019 Copyright:
+            <a href="https://uh.ac.cr/" target="_blank"> Universidad Hispanoamericana</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</body>
+</html>

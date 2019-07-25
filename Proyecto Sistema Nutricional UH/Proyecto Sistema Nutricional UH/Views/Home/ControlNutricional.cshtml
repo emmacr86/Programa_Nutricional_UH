@@ -1,0 +1,264 @@
+﻿@model Proyecto_Sistema_Nutricional_UH.Models.Dieta
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sistema Nutrional UH | Control Nutricional</title>
+    <link rel="Icon" href="~/Images/icono.ico">
+    <link href="~/Css/stylesheet-login.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-grid.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Css/style-chart.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+</head>
+<body>
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header text-white">
+                    <img src="~/Images/uhLogo.png" id="logo" />
+                </div>
+            </div>
+        </nav>
+        <!-- Navbar -->
+    </header>
+    <main>
+        <!-- section -->
+        <section>
+            <div class="container-fluid text-center">
+                <h3 class="text-white">Seleccione los alimentos que consume:</h3>
+                @using (Html.BeginForm())
+                {
+                <div class="row content">
+                    <div class="col-sm-1">
+                    </div>
+                    <div class="col-sm-2">
+                        <div >
+                            <h6 class="text-white text-center">Carnes</h6>
+                            <label class="text-white text-center">Res</label>
+                                @Html.DropDownListFor(x => x.carne, new[]{
+                                new SelectListItem() { Text= "Sí consumo", Value = "380"},
+                                new SelectListItem() { Text= "No consumo", Value = "0"}},
+                                new { @class = "form-control", @required = "required" })
+                        </div>
+                        <div >
+                            <label class="text-white text-center">Pollo</label>
+                            @Html.DropDownListFor(x => x.pollo, new[]{
+                                new SelectListItem() { Text= "Sí consumo", Value = "369"},
+                                new SelectListItem() { Text= "No consumo", Value = "0"}},
+                                new { @class = "form-control", @required = "required" })
+                        </div>
+                        <div >
+                            <label class="text-white text-center">Cerdo</label>
+                            @Html.DropDownListFor(x => x.cerdo, new[]{
+                                new SelectListItem() { Text= "Sí consumo", Value = "330"},
+                                new SelectListItem() { Text= "No consumo", Value = "0"}},
+                                new { @class = "form-control", @required = "required" })
+                        </div>
+                        <div >
+                            <label class="text-white text-center">Pescado</label>
+                            @Html.DropDownListFor(x => x.pescado, new[]{
+                                new SelectListItem() { Text= "Sí consumo", Value = "200"},
+                                new SelectListItem() { Text= "No consumo", Value = "0"}},
+                                new { @class = "form-control", @required = "required" })
+                        </div>
+                        <div>
+                            <label class="text-white text-center">Ternero</label>
+                            @Html.DropDownListFor(x => x.ternero, new[]{
+                                new SelectListItem() { Text= "Sí consumo", Value = "207"},
+                                new SelectListItem() { Text= "No consumo", Value = "0"}},
+                                new { @class = "form-control", @required = "required" })
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div>
+                            <h6 class="text-white text-center">Lacteos</h6>
+                            <label class="text-white text-center">Leche</label>
+                            @Html.DropDownListFor(x => x.leche, new[]{
+                                new SelectListItem() { Text= "Sí consumo", Value = "68"},
+                                new SelectListItem() { Text= "No consumo", Value = "0"}},
+                                new { @class = "form-control", @required = "required" })
+                        </div>
+                        <div>
+                            <label class="text-white text-center">Queso</label>
+                            @Html.DropDownListFor(x => x.queso, new[]{
+                                new SelectListItem() { Text= "Sí consumo", Value = "381"},
+                                new SelectListItem() { Text= "No consumo", Value = "0"}},
+                                new { @class = "form-control", @required = "required" })
+                        </div>
+                        <div>
+                            <label class="text-white text-center">Helado</label>
+                            @Html.DropDownListFor(x => x.cerdo, new[]{
+                                new SelectListItem() { Text= "Sí consumo", Value = "167"},
+                                new SelectListItem() { Text= "No consumo", Value = "0"}},
+                                new { @class = "form-control", @required = "required" })
+                        </div>
+                        <div>
+                            <label class="text-white text-center">Yogurth</label>
+                            @Html.DropDownListFor(x => x.yogurth, new[]{
+                                new SelectListItem() { Text= "Sí consumo", Value = "65"},
+                                new SelectListItem() { Text= "No consumo", Value = "0"}},
+                                new { @class = "form-control", @required = "required" })
+                        </div>
+                        <div>
+                            <label class="text-white text-center">Natilla</label>
+                            @Html.DropDownListFor(x => x.natilla, new[]{
+                                new SelectListItem() { Text= "Sí consumo", Value = "298"},
+                                new SelectListItem() { Text= "No consumo", Value = "0"}},
+                                new { @class = "form-control", @required = "required" })
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div>
+                            <h6 class="text-white text-center">Verduras</h6>
+                            <label class="text-white text-center">Brócoli</label>
+                            @Html.DropDownListFor(x => x.brocoli, new[]{
+                                new SelectListItem() { Text= "Sí consumo", Value = "31"},
+                                new SelectListItem() { Text= "No consumo", Value = "0"}},
+                                new { @class = "form-control", @required = "required" })
+                        </div>
+                        <div>
+                            <label class="text-white text-center">Tomate</label>
+                            @Html.DropDownListFor(x => x.tomate, new[]{
+                                new SelectListItem() { Text= "Sí consumo", Value = "47"},
+                                new SelectListItem() { Text= "No consumo", Value = "0"}},
+                                new { @class = "form-control", @required = "required" })
+                        </div>
+                        <div>
+                            <label class="text-white text-center">Lechuga</label>
+                            @Html.DropDownListFor(x => x.lechuga, new[]{
+                                new SelectListItem() { Text= "Sí consumo", Value = "18"},
+                                new SelectListItem() { Text= "No consumo", Value = "0"}},
+                                new { @class = "form-control", @required = "required" })
+                        </div>
+                        <div>
+                            <label class="text-white text-center">Papas</label>
+                            @Html.DropDownListFor(x => x.papas, new[]{
+                                new SelectListItem() { Text= "Sí consumo", Value = "86"},
+                                new SelectListItem() { Text= "No consumo", Value = "0"}},
+                                new { @class = "form-control", @required = "required" })
+                        </div>
+                        <div>
+                            <label class="text-white text-center">Repollo</label>
+                            @Html.DropDownListFor(x => x.repollo, new[]{
+                                new SelectListItem() { Text= "Sí consumo", Value = "19"},
+                                new SelectListItem() { Text= "No consumo", Value = "0"}},
+                                new { @class = "form-control", @required = "required" })
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div>
+                            <h6 class="text-white text-center">Frutas</h6>
+                            <label class="text-white text-center">Manzana</label>
+                            @Html.DropDownListFor(x => x.manzana, new[]{
+                                new SelectListItem() { Text= "Sí consumo", Value = "52"},
+                                new SelectListItem() { Text= "No consumo", Value = "0"}},
+                                new { @class = "form-control", @required = "required" })
+                        </div>
+                        <div>
+                            <label class="text-white text-center">Pera</label>
+                            @Html.DropDownListFor(x => x.pera, new[]{
+                                new SelectListItem() { Text= "Sí consumo", Value = "61"},
+                                new SelectListItem() { Text= "No consumo", Value = "0"}},
+                                new { @class = "form-control", @required = "required" })
+                        </div>
+                        <div>
+                            <label class="text-white text-center">Naranja</label>
+                            @Html.DropDownListFor(x => x.naranja, new[]{
+                                new SelectListItem() { Text= "Sí consumo", Value = "44"},
+                                new SelectListItem() { Text= "No consumo", Value = "0"}},
+                                new { @class = "form-control", @required = "required" })
+                        </div>
+                        <div>
+                            <label class="text-white text-center">Banano</label>
+                            @Html.DropDownListFor(x => x.banano, new[]{
+                                new SelectListItem() { Text= "Sí consumo", Value = "90"},
+                                new SelectListItem() { Text= "No consumo", Value = "0"}},
+                                new { @class = "form-control", @required = "required" })
+                        </div>
+                        <div>
+                            <label class="text-white text-center">Mandarina</label>
+                            @Html.DropDownListFor(x => x.mandarina, new[]{
+                                new SelectListItem() { Text= "Sí consumo", Value = "40"},
+                                new SelectListItem() { Text= "No consumo", Value = "0"}},
+                                new { @class = "form-control", @required = "required" })
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div>
+                            <h6 class="text-white text-center">Granos y otros</h6>
+                            <label class="text-white text-center">Arroz</label>
+                            @Html.DropDownListFor(x => x.arroz, new[]{
+                                new SelectListItem() { Text= "Sí consumo", Value = "354"},
+                                new SelectListItem() { Text= "No consumo", Value = "0"}},
+                                new { @class = "form-control", @required = "required" })
+                        </div>
+                        <div>
+                            <label class="text-white text-center">Frijoles</label>
+                            @Html.DropDownListFor(x => x.frijoles, new[]{
+                                new SelectListItem() { Text= "Sí consumo", Value = "361"},
+                                new SelectListItem() { Text= "No consumo", Value = "0"}},
+                                new { @class = "form-control", @required = "required" })
+                        </div>
+                        <div>
+                            <label class="text-white text-center">Cereal</label>
+                            @Html.DropDownListFor(x => x.cereal, new[]{
+                                new SelectListItem() { Text= "Sí consumo", Value = "386"},
+                                new SelectListItem() { Text= "No consumo", Value = "0"}},
+                                new { @class = "form-control", @required = "required" })
+                        </div>
+                        <div>
+                            <label class="text-white text-center">Pan</label>
+                            @Html.DropDownListFor(x => x.pan, new[]{
+                                new SelectListItem() { Text= "Sí consumo", Value = "255"},
+                                new SelectListItem() { Text= "No consumo", Value = "0"}},
+                                new { @class = "form-control", @required = "required" })
+                        </div>
+                        <div>
+                            <label class="text-white text-center">Pastas</label>
+                            @Html.DropDownListFor(x => x.pasta, new[]{
+                                new SelectListItem() { Text= "Sí consumo", Value = "368"},
+                                new SelectListItem() { Text= "No consumo", Value = "0"}},
+                                new { @class = "form-control", @required = "required" })
+                        </div>
+                    </div>
+                    <div class="col-sm-1">                   
+                    </div>
+                </div>
+                <div class="row content">
+                    <div class="col-sm-9">
+                    </div>
+                    <div class="col-sm-2">
+                        <br>
+                        <button type="submit" value="save" class="btn btn-success">Guardar</button>
+                        <label class="text-white">@ViewBag.mensaje</label>
+                    </div>
+                    <div class="col-sm-1">
+                    </div>
+                </div>
+                }
+                </div>
+        </section>
+        <!-- section -->
+    </main>
+    <!-- Footer -->
+    <footer class="page-footer font-small blue">
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">
+            © 2019 Copyright:
+            <a href="https://uh.ac.cr/" target="_blank"> Universidad Hispanoamericana</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+    <!-- Scripts -->
+</body>
+</html>

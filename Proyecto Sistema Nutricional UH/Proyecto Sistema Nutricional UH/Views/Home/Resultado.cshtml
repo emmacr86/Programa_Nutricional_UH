@@ -1,0 +1,137 @@
+﻿@model Proyecto_Sistema_Nutricional_UH.Models.RegistrosAvances
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sistema Nutrional UH | Dieta Final</title>
+    <link rel="Icon" href="~/Images/icono.ico">
+    <link href="~/Css/stylesheet-login.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-grid.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Css/style-chart.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <link href="~/Css/style-buttons.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header text-white">
+                    <img src="~/Images/uhLogo.png" id="logo" />
+                </div>
+            </div>
+        </nav>
+        <!-- Navbar -->
+    </header>
+    <main>
+        <!-- section -->
+        <section>
+            <div class="container-fluid text-center">
+                <h5 class="text-white">Su nueva dieta por esta semana: </h5>
+                <div class="row content">
+                    <div class="col-sm-2">
+                    </div>
+                    <div class="col-sm-8 text-center text-white">
+                        <div id="descargaTabla">
+                            <table class="table-hover" width="400" cellpadding="3" cellspacing="0" border="0" align="center">
+                                <thead>
+                                    <tr class="text-center">
+                                        <th class="text-center">Lunes</th>
+                                        <th class="text-center">Martes</th>
+                                        <th class="text-center">Miercoles</th>
+                                        <th class="text-center">Jueves</th>
+                                        <th class="text-center">Viernes</th>
+                                        <th class="text-center">Sábado</th>
+                                        <th class="text-center">Domingo</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-center">
+                                    <tr>
+                                        <td class="text-center">Carne @Model.totalCarnes gr</td>
+                                        <td class="text-center">Carne @Model.totalCarnes gr</td>
+                                        <td class="text-center">Carne @Model.totalCarnes gr</td>
+                                        <td class="text-center">Carne @Model.totalCarnes gr</td>
+                                        <td class="text-center">Carne @Model.totalCarnes gr</td>
+                                        <td class="text-center">Carne @Model.totalCarnes gr</td>
+                                        <td class="text-center">Carne @Model.totalCarnes gr</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">Verduras @Model.totalVerduras gr</td>
+                                        <td class="text-center">Verduras @Model.totalVerduras gr</td>
+                                        <td class="text-center">Verduras @Model.totalVerduras gr</td>
+                                        <td class="text-center">Verduras @Model.totalVerduras gr</td>
+                                        <td class="text-center">Verduras @Model.totalVerduras gr</td>
+                                        <td class="text-center">Verduras @Model.totalVerduras gr</td>
+                                        <td class="text-center">Verduras @Model.totalVerduras gr</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">Lacteos @Model.totalLacteos ml</td>
+                                        <td class="text-center">Lacteos @Model.totalLacteos ml</td>
+                                        <td class="text-center">Lacteos @Model.totalLacteos ml</td>
+                                        <td class="text-center">Lacteos @Model.totalLacteos ml</td>
+                                        <td class="text-center">Lacteos @Model.totalLacteos ml</td>
+                                        <td class="text-center">Lacteos @Model.totalLacteos ml</td>
+                                        <td class="text-center">Lacteos @Model.totalLacteos ml</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">Frutas @Model.totalFrutas gr</td>
+                                        <td class="text-center">Frutas @Model.totalFrutas gr</td>
+                                        <td class="text-center">Frutas @Model.totalFrutas gr</td>
+                                        <td class="text-center">Frutas @Model.totalFrutas gr</td>
+                                        <td class="text-center">Frutas @Model.totalFrutas gr</td>
+                                        <td class="text-center">Frutas @Model.totalFrutas gr</td>
+                                        <td class="text-center">Frutas @Model.totalFrutas gr</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">Granos @Model.totalGranos gr</td>
+                                        <td class="text-center">Granos @Model.totalGranos gr</td>
+                                        <td class="text-center">Granos @Model.totalGranos gr</td>
+                                        <td class="text-center">Granos @Model.totalGranos gr</td>
+                                        <td class="text-center">Granos @Model.totalGranos gr</td>
+                                        <td class="text-center">Granos @Model.totalGranos gr</td>
+                                        <td class="text-center">Granos @Model.totalGranos gr</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <br>
+                        <h6 class="text-white text-left">Su cuerpo requiere ingerir alimentos diarios de @Model.caloriasnecesariasdieta calorias, cumpliendo la dieta su nuevo peso sería de: @Model.pesonuevo kg<br></h6>
+                        <div class="form-group">
+                            <button type="button" value="Descargar Dieta" class="btn btn-primary">Descargar Dieta</button>
+                        </div>
+                        <div class="form-group">
+                            <input type="button" value="Realizar Nueva Dieta" class="btn btn-success" onclick="@("window.location.href='" + @Url.Action("Index", "Home") + "'");" />
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- section -->
+    </main>
+    <!-- Footer -->
+    <footer class="page-footer font-small blue">
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">
+            © 2019 Copyright:
+            <a href="https://uh.ac.cr/" target="_blank"> Universidad Hispanoamericana</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+    <!-- Scripts -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.js"></script>
+    <script src="~/Scripts/descarga-dieta.js"></script>
+</body>
+</html>
+
